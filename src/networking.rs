@@ -83,3 +83,8 @@ pub async fn listen_for_peers() -> tokio::io::Result<()> {
         }
     }
 }
+
+pub async fn send_message(mut socket: TcpStream, message: &str) -> tokio::io::Result<()> {
+    socket.write_all(message.as_bytes()).await?;
+    Ok(())
+}
